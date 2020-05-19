@@ -17,7 +17,8 @@ const postcssUrl = require("postcss-url");
 
 const isProduction = process.env.NODE_ENV === "production";
 const isTest = process.env.NODE_ENV === "test";
-const dist = "dist";
+// const dist = "dist";
+const dist = "";
 
 // Read more in https://dumber.js.org
 const dr = dumber({
@@ -26,7 +27,7 @@ const dr = dumber({
 
   // requirejs baseUrl, dumber default is "/dist"
   // baseUrl: "/" + dist,
-  baseUrl: "",
+  baseUrl: "/",
 
   // can turn off cache for production build
   // cache: !isProduction,
@@ -152,13 +153,14 @@ function build() {
     // https://github.com/terser-js/terser#terser-fast-minify-mode
     // It's a good balance on size and speed to turn off compress.
     .pipe(gulpif(isProduction, terser({ compress: false })))
-    .pipe(gulp.dest(dist, { sourcemaps: isProduction ? false : "." }))
+    .pipe(gulp.dest("dist", { sourcemaps: isProduction ? false : "." }))
     .pipe(gulp.src("./index.html").pipe(gulp.dest("./dist/")));
   return res;
 }
 
 function clean() {
-  return del(dist);
+  // return del(dist);
+  return del("dist");
 }
 
 function clearCache() {
