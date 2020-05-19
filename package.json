@@ -1,0 +1,74 @@
+{
+  "name": "staticweb-aurelia",
+  "description": "An Aurelia 2 client application.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "???"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "aurelia": "dev"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "@aurelia/testing": "dev",
+    "htmlhint": "^0.11.0",
+    "@aurelia/plugin-gulp": "dev",
+    "gulp": "^4.0.0",
+    "gulp-dumber": "^1.0.0",
+    "gulp-typescript": "^5.0.0",
+    "gulp-plumber": "^1.0.0",
+    "merge2": "^1.0.0",
+    "gulp-terser": "^1.0.0",
+    "gulp-if": "^3.0.0",
+    "del": "^5.0.0",
+    "browser-sync": "^2.0.0",
+    "connect-history-api-fallback": "^1.0.0",
+    "cross-env": "^7.0.0",
+    "gulp-dumber-css-module": "^0.1.0",
+    "gulp-postcss": "^8.0.0",
+    "autoprefixer": "^9.0.0",
+    "postcss-url": "^8.0.0",
+    "@types/node": "^13.0.0",
+    "typescript": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "jest": "^26.0.0",
+    "jest-transform-stub": "^2.0.0",
+    "@types/jest": "^25.0.0",
+    "@aurelia/ts-jest": "dev",
+    "cypress": "^4.0.0",
+    "eslint-plugin-cypress": "^2.0.0"
+  },
+  "scripts": {
+    "lint:js": "eslint src test cypress --ext .js,.ts",
+    "lint:html": "htmlhint -c .htmlhintrc src",
+    "lint": "npm run lint:js && npm run lint:html",
+    "pretest": "npm run lint",
+    "start": "gulp",
+    "build": "gulp clean && cross-env NODE_ENV=production gulp build",
+    "clear-cache": "gulp clear-cache",
+    "test": "jest",
+    "test:e2e": "cypress run"
+  },
+  "jest": {
+    "transform": {
+      "\\.(css|less|sass|scss|styl|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "jest-transform-stub",
+      "\\.(ts|html)$": [
+        "@aurelia/ts-jest",
+        {
+          "useCSSModule": true
+        }
+      ]
+    },
+    "setupFiles": [
+      "<rootDir>/test/setup.ts"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.d.ts"
+    ]
+  }
+}
