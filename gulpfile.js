@@ -26,7 +26,7 @@ const dr = dumber({
 
   // requirejs baseUrl, dumber default is "/dist"
   // baseUrl: "/" + dist,
-  baseUrl: "/",
+  baseUrl: "",
 
   // can turn off cache for production build
   // cache: !isProduction,
